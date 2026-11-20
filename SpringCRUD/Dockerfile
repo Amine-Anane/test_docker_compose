@@ -1,7 +1,7 @@
 FROM gradle:jdk17-alpine AS BUILD
 WORKDIR /springCRUD_build
 COPY . /springCRUD_build
-RUN gradle bootJar
+RUN chmod +x ./gradlew && ./gradlew --no-daemon clean bootJar
 
 FROM eclipse-temurin:17-jre-alpine
 ENV PORT=8080 DATABASE_PORT=5432 DATABASE_HOST=localhost
